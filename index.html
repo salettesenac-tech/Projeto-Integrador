@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+    content="VivaLíngua — uma plataforma para descobrir, valorizar e compreender a diversidade linguística brasileira.">
+
+  <meta name="theme-color" content="#476E63">
+
+  <title>VivaLíngua | Todo o Brasil cabe em uma palavra</title>
+
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    rel="stylesheet">
+
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+  <a class="skip-link" href="#conteudo">
+    Pular para o conteúdo
+  </a>
+
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+
+  <nav
+    class="navbar navbar-expand-lg navbar-light fixed-top"
+    id="mainNav"
+    aria-label="Navegação principal"
+  >
+
+    <div class="container">
+
+      <a
+        class="navbar-brand d-flex align-items-center gap-2"
+        href="#inicio"
+        aria-label="VivaLíngua - início"
+      >
+
+        <span class="brand-mark" aria-hidden="true">
+          <i class="bi bi-book-half"></i>
+        </span>
+
+        <span>
+          Viva<span class="brand-accent">Língua</span>
+        </span>
+
+      </a>
+
+
+      <button
+        class="navbar-toggler border-0 shadow-none"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarContent"
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Abrir menu"
+      >
+
+        <i class="bi bi-list fs-2"></i>
+
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+
+          <li class="nav-item">
+            <a class="nav-link" href="#explorar">
+              Explorar
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#palavra-do-dia">
+              Palavra do dia
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#variacoes">
+              Variações
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#curiosidades">
+              Você sabia?
+            </a>
+          </li>
+
+          <li class="nav-item ms-lg-2">
+
+            <a class="btn btn-nav" href="#contribua">
+
+              Contribua
+
+              <i class="bi bi-arrow-up-right ms-1"></i>
+
+            </a>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+
+  <!-- =========================
+       CONTEÚDO PRINCIPAL
+  ========================== -->
+
+  <main id="conteudo">
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section id="inicio" class="hero-section">
+
+      <div class="hero-decoration hero-decoration-one"></div>
+
+      <div class="hero-decoration hero-decoration-two"></div>
+
+
+      <div class="container position-relative">
+
+        <div class="row align-items-center g-5">
+
+
+          <div class="col-lg-7">
+
+            <div class="eyebrow mb-3">
+
+              <span></span>
+
+              Linguagem, território e identidade
+
+            </div>
+
+
+            <h1>
+
+              Todo o Brasil cabe em
+
+              <em>uma palavra.</em>
+
+            </h1>
+
+
+            <p class="hero-lead">
+
+              Descubra como sotaques, gírias, expressões e palavras de diferentes origens
+              contam histórias sobre quem somos e de onde viemos.
+
+            </p>
+
+
+            <form
+              class="search-box mt-4"
+              id="heroSearchForm"
+              role="search"
+            >
+
+              <label
+                class="visually-hidden"
+                for="heroSearch"
+              >
+                Pesquise uma palavra ou expressão
+              </label>
+
+
+              <i
+                class="bi bi-search search-icon"
+                aria-hidden="true"
+              ></i>
+
+
+              <input
+                id="heroSearch"
+                type="search"
+                autocomplete="off"
+                placeholder="Pesquise uma palavra, gíria ou expressão..."
+                aria-describedby="searchHint"
+              >
+
+
+              <button
+                type="submit"
+                class="btn-search"
+              >
+
+                Pesquisar
+
+              </button>
+
+            </form>
+
+
+            <small
+              id="searchHint"
+              class="search-hint"
+            >
+
+              Experimente:
+              mandioca,
+              aipim,
+              macaxeira,
+              guri
+              ou
+              oxente.
+
+            </small>
+
+
+            <div
+              class="hero-tags mt-4"
+              aria-label="Sugestões de pesquisa"
+            >
+
+              <span>Experimente</span>
+
+
+              <button
+                class="tag-btn"
+                data-search="mandioca"
+              >
+                mandioca
+              </button>
+
+
+              <button
+                class="tag-btn"
+                data-search="aipim"
+              >
+                aipim
+              </button>
+
+
+              <button
+                class="tag-btn"
+                data-search="guri"
+              >
+                guri
+              </button>
+
+
+              <button
+                class="tag-btn"
+                data-search="oxente"
+              >
+                oxente
+              </button>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="col-lg-5">
+
+            <div class="hero-art">
+
+              <div class="hero-image-wrap">
+
+                <img
+                  src="https://images.unsplash.com/photo-1668194645738-ef8dbb426086?q=80&w=600"
+                  alt="Vegetação da floresta brasileira em meio à natureza"
+                >
+
+              </div>
+
+
+              <div class="floating-note note-top">
+
+                <span class="note-icon">
+
+                  <i class="bi bi-chat-heart"></i>
+
+                </span>
+
+
+                <div>
+
+                  <strong>
+                    Falar também é pertencer.
+                  </strong>
+
+                  <small>
+                    Conheça outras vozes do Brasil.
+                  </small>
+
+                </div>
+
+              </div>
+
+
+              <div class="floating-note note-bottom">
+
+                <span class="mini-map" aria-hidden="true">
+
+                  <i class="bi bi-geo-alt-fill"></i>
+
+                </span>
+
+
+                <div>
+
+                  <strong>
+                    27 estados
+                  </strong>
+
+                  <small>
+                    milhares de maneiras de dizer
+                  </small>
+
+                </div>
+
+              </div>
+
+
+              <div class="hero-stamp" aria-hidden="true">
+
+                <span>BR</span>
+
+                <small>
+                  diversidade<br>
+                  linguística
+                </small>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         MANIFESTO
+    ========================== -->
+
+    <section class="manifesto-strip">
+
+      <div class="container">
+
+        <div class="row align-items-center g-3">
+
+          <div class="col-lg-8">
+
+            <p class="mb-0">
+
+              <strong>
+                Não existe um único jeito de falar português.
+              </strong>
+
+              Existem variedades,
+              contextos e histórias —
+              e todas elas ajudam a formar o português brasileiro.
+
+            </p>
+
+          </div>
+
+
+          <div class="col-lg-4 text-lg-end">
+
+            <a
+              href="#sobre"
+              class="strip-link"
+            >
+
+              Por que isso importa?
+
+              <i class="bi bi-arrow-down"></i>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         EXPLORAR
+    ========================== -->
+
+    <section
+      id="explorar"
+      class="section-padding"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="section-kicker">
+              Explore o vocabulário
+            </span>
+
+            <h2>
+              Uma palavra pode contar uma história.
+            </h2>
+
+          </div>
+
+
+          <p>
+
+            Pesquise no nosso acervo demonstrativo e descubra significado,
+            contexto, região e curiosidades.
+
+          </p>
+
+        </div>
+
+
+        <div
+          id="searchResults"
+          class="search-results d-none"
+          aria-live="polite"
+        ></div>
+
+
+        <div class="row g-4 mt-1">
+
+
+          <div class="col-lg-4">
+
+            <article class="feature-card feature-card-main h-100">
+
+              <div class="card-icon orange">
+
+                <i class="bi bi-search"></i>
+
+              </div>
+
+
+              <h3>
+                Pesquise palavras
+              </h3>
+
+
+              <p>
+
+                Encontre significados e observe como uma mesma língua ganha
+                diferentes formas conforme o lugar e a comunidade.
+
+              </p>
+
+
+              <a
+                href="#busca-completa"
+                class="text-link"
+              >
+
+                Abrir explorador
+
+                <i class="bi bi-arrow-right"></i>
+
+              </a>
+
+            </article>
+
+          </div>
+
+
+
+          <div class="col-lg-4">
+
+            <article class="feature-card h-100">
+
+              <div class="card-icon green">
+
+                <i class="bi bi-map"></i>
+
+              </div>
+
+
+              <h3>
+                Compare regiões
+              </h3>
+
+
+              <p>
+
+                Veja exemplos de palavras que mudam de nome entre regiões
+                brasileiras, sem transformar diferença em erro.
+
+              </p>
+
+
+              <a
+                href="#variacoes"
+                class="text-link"
+              >
+
+                Ver variações
+
+                <i class="bi bi-arrow-right"></i>
+
+              </a>
+
+            </article>
+
+          </div>
+
+
+
+          <div class="col-lg-4">
+
+            <article class="feature-card h-100">
+
+              <div class="card-icon blue">
+
+                <i class="bi bi-volume-up"></i>
+
+              </div>
+
+
+              <h3>
+                Escute e descubra
+              </h3>
+
+
+              <p>
+
+                O glossário sonoro é pensado para aproximar a escrita da maneira
+                como as palavras são realmente pronunciadas.
+
+              </p>
+
+
+              <a
+                href="#glossario"
+                class="text-link"
+              >
+
+                Conhecer o glossário
+
+                <i class="bi bi-arrow-right"></i>
+
+              </a>
+
+            </article>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         PALAVRA INDÍGENA DO DIA
+         ALTERADA PARA FUNCIONAR COM O JAVASCRIPT
+    =================================================== -->
+
+    <section
+      id="palavra-do-dia"
+      class="daily-section section-padding"
+    >
+
+      <div class="container">
+
+        <div class="row align-items-center g-5">
+
+
+          <!-- CARD DA PALAVRA -->
+
+          <div class="col-lg-5">
+
+            <div class="daily-visual">
+
+              <div class="daily-circle"></div>
+
+              <div class="leaf leaf-1">
+                ✦
+              </div>
+
+              <div class="leaf leaf-2">
+                ❋
+              </div>
+
+
+              <div class="word-card">
+
+                <span class="word-label">
+                  Palavra indígena do dia
+                </span>
+
+
+                <!--
+                  O JavaScript vai alterar este texto
+                -->
+
+                <h2 id="dailyWord">
+                  Mandioca
+                </h2>
+
+
+                <!--
+                  O JavaScript vai alterar a pronúncia
+                -->
+
+                <div
+                  class="word-pronunciation"
+                  id="dailyPronunciation"
+                >
+                  man-di-o-ca
+                </div>
+
+
+                <!--
+                  O data-word também será atualizado pelo JavaScript
+                -->
+
+                <button
+                  class="sound-button"
+                  id="dailySoundButton"
+                  data-word="mandioca"
+                  aria-label="Ouvir pronúncia aproximada de mandioca"
+                  type="button"
+                >
+
+                  <i class="bi bi-volume-up-fill"></i>
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- INFORMAÇÕES DA PALAVRA -->
+
+          <div class="col-lg-7">
+
+            <span class="section-kicker">
+              Aprenda um pouco mais
+            </span>
+
+
+            <h2 class="display-title">
+              Uma palavra. Muitas camadas.
+            </h2>
+
+
+            <p class="lead-copy">
+
+              A presença indígena na formação do português brasileiro aparece
+              em inúmeros nomes de plantas, animais, lugares e elementos do cotidiano.
+
+            </p>
+
+
+
+            <!-- ORIGEM -->
+
+            <div class="origin-box">
+
+              <div class="origin-icon">
+
+                <i class="bi bi-tree-fill"></i>
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  Origem
+                </span>
+
+
+                <!--
+                  O JavaScript vai atualizar este texto
+                -->
+
+                <strong id="dailyOrigin">
+                  Tupi
+                </strong>
+
+
+                <!--
+                  O JavaScript vai atualizar este texto
+                -->
+
+                <p id="dailyUse">
+                  Raiz muito utilizada na alimentação brasileira.
+                </p>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- INFORMAÇÕES EXTRAS -->
+
+            <div class="row g-3 mt-3">
+
+
+              <div class="col-md-6">
+
+                <div class="mini-info">
+
+                  <span>
+                    Palavra atual
+                  </span>
+
+
+                  <strong id="dailyWordSmall">
+                    Mandioca
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="col-md-6">
+
+                <div class="mini-info">
+
+                  <span>
+                    Origem linguística
+                  </span>
+
+
+                  <strong id="dailyOriginSmall">
+                    Tupi
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+
+            <div class="source-note mt-4">
+
+              <i class="bi bi-info-circle"></i>
+
+              <span>
+
+                Conteúdo editorial baseado em referências brasileiras;
+                consulte as fontes para aprofundamento.
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         VARIAÇÕES
+    ========================== -->
+
+    <section
+      id="variacoes"
+      class="section-padding region-section"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="section-kicker">
+              Brasil em palavras
+            </span>
+
+            <h2>
+              Qual palavra você usa?
+            </h2>
+
+          </div>
+
+
+          <p>
+
+            Selecione uma região para explorar exemplos.
+            O mapa abaixo funciona como um protótipo interativo da experiência.
+
+          </p>
+
+        </div>
+
+
+        <div class="row g-4 align-items-stretch">
+
+
+          <div class="col-lg-6">
+
+            <div class="brazil-map-card">
+
+              <div class="map-caption">
+
+                <span class="pulse"></span>
+
+                Mapa de variações
+
+              </div>
+
+
+              <div
+                class="brazil-map"
+                aria-label="Mapa conceitual interativo das regiões do Brasil"
+              >
+
+
+                <button
+                  class="map-region north"
+                  data-region="norte"
+                  aria-label="Região Norte"
+                >
+                  Norte
+                </button>
+
+
+                <button
+                  class="map-region northeast"
+                  data-region="nordeste"
+                  aria-label="Região Nordeste"
+                >
+                  Nordeste
+                </button>
+
+
+                <button
+                  class="map-region center"
+                  data-region="centro-oeste"
+                  aria-label="Região Centro-Oeste"
+                >
+                  Centro-Oeste
+                </button>
+
+
+                <button
+                  class="map-region southeast"
+                  data-region="sudeste"
+                  aria-label="Região Sudeste"
+                >
+                  Sudeste
+                </button>
+
+
+                <button
+                  class="map-region south"
+                  data-region="sul"
+                  aria-label="Região Sul"
+                >
+                  Sul
+                </button>
+
+
+              </div>
+
+
+              <div class="map-legend">
+
+                <span>
+                  <i class="dot orange-dot"></i>
+                  clique em uma região
+                </span>
+
+                <span>
+                  dados demonstrativos
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="col-lg-6">
+
+            <div
+              class="variation-panel"
+              id="variationPanel"
+            >
+
+              <div class="variation-header">
+
+                <div>
+
+                  <span class="section-kicker">
+                    Exemplo
+                  </span>
+
+                  <h3 id="regionTitle">
+                    Mandioca pelo Brasil
+                  </h3>
+
+                </div>
+
+
+                <span
+                  class="region-pill"
+                  id="regionPill"
+                >
+                  Brasil
+                </span>
+
+              </div>
+
+
+              <p id="regionDescription">
+
+                A mesma raiz pode receber nomes diferentes conforme a região.
+                Escolha uma região no mapa para começar.
+
+              </p>
+
+
+              <div
+                class="variant-list"
+                id="variantList"
+              >
+
+                <div class="variant-item">
+
+                  <span class="variant-word">
+                    Mandioca
+                  </span>
+
+                  <span class="variant-place">
+                    uso amplo
+                  </span>
+
+                </div>
+
+
+                <div class="variant-item">
+
+                  <span class="variant-word">
+                    Aipim
+                  </span>
+
+                  <span class="variant-place">
+                    muito usado no Sudeste
+                  </span>
+
+                </div>
+
+
+                <div class="variant-item">
+
+                  <span class="variant-word">
+                    Macaxeira
+                  </span>
+
+                  <span class="variant-place">
+                    muito usado no Norte e Nordeste
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="callout">
+
+                <i class="bi bi-lightbulb"></i>
+
+                <div>
+
+                  <strong>
+                    Diferença não é defeito.
+                  </strong>
+
+                  <p class="mb-0">
+
+                    O uso de uma variante pode revelar território,
+                    história, convivência e identidade.
+
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CURIOSIDADES
+    ========================== -->
+
+    <section
+      id="curiosidades"
+      class="section-padding"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="section-kicker">
+              Pequenas descobertas
+            </span>
+
+            <h2>
+              Você sabia?
+            </h2>
+
+          </div>
+
+
+          <p>
+
+            Curiosidades para olhar para o português brasileiro
+            com mais atenção e menos julgamento.
+
+          </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+          <div class="col-md-4">
+
+            <article class="fact-card h-100">
+
+              <span class="fact-number">
+                01
+              </span>
+
+              <i class="bi bi-flower1 fact-icon"></i>
+
+
+              <h3>
+                O português brasileiro tem raízes diversas
+              </h3>
+
+
+              <p>
+
+                O contato entre povos indígenas e portugueses
+                incorporou palavras de línguas indígenas ao vocabulário usado no Brasil.
+
+              </p>
+
+
+              <a
+                href="#fontes"
+                class="text-link"
+              >
+
+                Ver referência
+
+                <i class="bi bi-arrow-up-right"></i>
+
+              </a>
+
+            </article>
+
+          </div>
+
+
+
+          <div class="col-md-4">
+
+            <article class="fact-card h-100">
+
+              <span class="fact-number">
+                02
+              </span>
+
+              <i class="bi bi-geo-alt fact-icon"></i>
+
+
+              <h3>
+                O território participa da língua
+              </h3>
+
+
+              <p>
+
+                Uma mesma ideia ou objeto pode ganhar nomes diferentes
+                em regiões distintas. A variação faz parte da vida das línguas.
+
+              </p>
+
+
+              <a
+                href="#variacoes"
+                class="text-link"
+              >
+
+                Explorar o mapa
+
+                <i class="bi bi-arrow-right"></i>
+
+              </a>
+
+            </article>
+
+          </div>
+
+
+
+          <div class="col-md-4">
+
+            <article class="fact-card h-100">
+
+              <span class="fact-number">
+                03
+              </span>
+
+              <i class="bi bi-people fact-icon"></i>
+
+
+              <h3>
+                Julgar uma fala pode gerar exclusão
+              </h3>
+
+
+              <p>
+
+                Pesquisas brasileiras sobre variação linguística mostram
+                como julgamentos sobre a fala podem produzir hierarquias e preconceitos.
+
+              </p>
+
+
+              <a
+                href="#fontes"
+                class="text-link"
+              >
+
+                Conhecer estudos
+
+                <i class="bi bi-arrow-up-right"></i>
+
+              </a>
+
+            </article>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         GLOSSÁRIO SONORO
+    ========================== -->
+
+    <section
+      id="glossario"
+      class="audio-section section-padding"
+    >
+
+      <div class="container">
+
+        <div class="row align-items-center g-5">
+
+
+          <div class="col-lg-5">
+
+            <span class="section-kicker">
+              Glossário sonoro
+            </span>
+
+
+            <h2 class="display-title">
+              A língua também mora no som.
+            </h2>
+
+
+            <p class="lead-copy">
+
+              Clique no botão para ouvir uma pronúncia aproximada
+              usando a tecnologia de voz disponível no seu navegador.
+
+            </p>
+
+
+            <div class="audio-note">
+
+              <i class="bi bi-headphones"></i>
+
+              <span>
+
+                Recurso demonstrativo.
+                A versão final pode receber gravações de falantes
+                de diferentes regiões.
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="col-lg-7">
+
+            <div class="audio-list">
+
+
+              <div class="audio-row">
+
+                <div>
+
+                  <span class="audio-word">
+                    Oxente
+                  </span>
+
+                  <small>
+                    interjeição • Nordeste
+                  </small>
+
+                </div>
+
+
+                <button
+                  class="play-word sound-button"
+                  data-word="oxente"
+                  aria-label="Ouvir oxente"
+                >
+
+                  <i class="bi bi-play-fill"></i>
+
+                </button>
+
+              </div>
+
+
+
+              <div class="audio-row">
+
+                <div>
+
+                  <span class="audio-word">
+                    Guri
+                  </span>
+
+                  <small>
+                    menino / criança • Sul
+                  </small>
+
+                </div>
+
+
+                <button
+                  class="play-word sound-button"
+                  data-word="guri"
+                  aria-label="Ouvir guri"
+                >
+
+                  <i class="bi bi-play-fill"></i>
+
+                </button>
+
+              </div>
+
+
+
+              <div class="audio-row">
+
+                <div>
+
+                  <span class="audio-word">
+                    Mandioca
+                  </span>
+
+                  <small>
+                    nome regional de raiz • Brasil
+                  </small>
+
+                </div>
+
+
+                <button
+                  class="play-word sound-button"
+                  data-word="mandioca"
+                  aria-label="Ouvir mandioca"
+                >
+
+                  <i class="bi bi-play-fill"></i>
+
+                </button>
+
+              </div>
+
+
+
+              <div class="audio-row">
+
+                <div>
+
+                  <span class="audio-word">
+                    Macaxeira
+                  </span>
+
+                  <small>
+                    variante regional • Norte/Nordeste
+                  </small>
+
+                </div>
+
+
+                <button
+                  class="play-word sound-button"
+                  data-word="macaxeira"
+                  aria-label="Ouvir macaxeira"
+                >
+
+                  <i class="bi bi-play-fill"></i>
+
+                </button>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTRIBUA
+    ========================== -->
+
+    <section
+      id="contribua"
+      class="contribute-section section-padding"
+    >
+
+      <div class="container">
+
+        <div class="contribute-card">
+
+          <div class="row align-items-center g-5">
+
+
+            <div class="col-lg-6">
+
+              <span class="section-kicker">
+                Espaço colaborativo
+              </span>
+
+
+              <h2>
+                Tem uma palavra que só a sua região usa?
+              </h2>
+
+
+              <p>
+
+                Compartilhe uma gíria ou expressão.
+                O formulário abaixo é uma demonstração da funcionalidade
+                colaborativa prevista no projeto.
+
+              </p>
+
+
+              <div class="contribute-points">
+
+                <span>
+                  <i class="bi bi-check2-circle"></i>
+                  Palavra ou expressão
+                </span>
+
+                <span>
+                  <i class="bi bi-check2-circle"></i>
+                  Região de origem
+                </span>
+
+                <span>
+                  <i class="bi bi-check2-circle"></i>
+                  Significado e contexto
+                </span>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="col-lg-6">
+
+              <form
+                id="contributionForm"
+                class="contribution-form"
+                novalidate
+              >
+
+                <div class="row g-3">
+
+
+                  <div class="col-md-6">
+
+                    <label
+                      for="contribWord"
+                      class="form-label"
+                    >
+                      Palavra ou expressão
+                    </label>
+
+
+                    <input
+                      id="contribWord"
+                      class="form-control"
+                      type="text"
+                      required
+                    >
+
+                  </div>
+
+
+
+                  <div class="col-md-6">
+
+                    <label
+                      for="contribRegion"
+                      class="form-label"
+                    >
+                      Região
+                    </label>
+
+
+                    <select
+                      id="contribRegion"
+                      class="form-select"
+                      required
+                    >
+
+                      <option value="">
+                        Selecione...
+                      </option>
+
+                      <option>
+                        Norte
+                      </option>
+
+                      <option>
+                        Nordeste
+                      </option>
+
+                      <option>
+                        Centro-Oeste
+                      </option>
+
+                      <option>
+                        Sudeste
+                      </option>
+
+                      <option>
+                        Sul
+                      </option>
+
+                    </select>
+
+                  </div>
+
+
+
+                  <div class="col-12">
+
+                    <label
+                      for="contribMeaning"
+                      class="form-label"
+                    >
+                      O que significa?
+                    </label>
+
+
+                    <textarea
+                      id="contribMeaning"
+                      class="form-control"
+                      rows="3"
+                      required
+                    ></textarea>
+
+                  </div>
+
+
+
+                  <div class="col-12">
+
+                    <label
+                      for="contribContext"
+                      class="form-label"
+                    >
+                      Em que situação você usa?
+                    </label>
+
+
+                    <input
+                      id="contribContext"
+                      class="form-control"
+                      type="text"
+                    >
+
+                  </div>
+
+
+
+                  <div
+                    class="col-12 d-flex justify-content-between align-items-center gap-3"
+                  >
+
+                    <small class="form-note">
+
+                      <i class="bi bi-shield-check"></i>
+
+                      Não pedimos cadastro.
+
+                    </small>
+
+
+                    <button
+                      class="btn btn-primary-custom"
+                      type="submit"
+                    >
+
+                      Enviar contribuição
+
+                      <i class="bi bi-send ms-1"></i>
+
+                    </button>
+
+                  </div>
+
+
+                </div>
+
+
+                <div
+                  id="contributionFeedback"
+                  class="form-feedback mt-3 d-none"
+                  role="status"
+                ></div>
+
+              </form>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SOBRE
+    ========================== -->
+
+    <section
+      id="sobre"
+      class="about-section section-padding"
+    >
+
+      <div class="container">
+
+        <div class="row g-5">
+
+
+          <div class="col-lg-7">
+
+            <span class="section-kicker">
+              Sobre o VivaLíngua
+            </span>
+
+
+            <h2 class="display-title">
+              Conhecimento linguístico como ferramenta de respeito.
+            </h2>
+
+
+            <p class="lead-copy">
+
+              O VivaLíngua nasce para tornar a diversidade linguística
+              brasileira mais conhecida e acessível.
+
+              A proposta é trocar a lógica de “certo x errado”
+              por uma experiência de descoberta:
+
+              <strong>
+                de onde vem essa forma de falar?
+              </strong>
+
+            </p>
+
+
+            <p>
+
+              O projeto foi pensado para escolas, professores,
+              estudantes e qualquer pessoa interessada em conhecer
+              as formas de falar presentes no Brasil.
+
+            </p>
+
+          </div>
+
+
+
+          <div class="col-lg-5">
+
+            <div class="team-card">
+
+              <div class="team-title">
+
+                <i class="bi bi-people-fill"></i>
+
+                <span>
+                  Equipe do projeto
+                </span>
+
+              </div>
+
+
+              <div class="team-line">
+
+                <strong>
+                  Docente
+                </strong>
+
+                <span>
+                  Wanderson Timóteo
+                </span>
+
+              </div>
+
+
+              <div class="team-line">
+
+                <strong>
+                  Elioenay
+                </strong>
+
+                <span>
+                  Auxiliar de Design Visual
+                </span>
+
+              </div>
+
+
+              <div class="team-line">
+
+                <strong>
+                  Maria Gabriela
+                </strong>
+
+                <span>
+                  Pesquisadora
+                </span>
+
+              </div>
+
+
+              <div class="team-line">
+
+                <strong>
+                  Salette
+                </strong>
+
+                <span>
+                  Principal Programadora
+                </span>
+
+              </div>
+
+
+              <div class="team-line">
+
+                <strong>
+                  Sara
+                </strong>
+
+                <span>
+                  Designer Visual do Site
+                </span>
+
+              </div>
+
+
+              <div class="team-line">
+
+                <strong>
+                  Yan
+                </strong>
+
+                <span>
+                  Programador Auxiliar
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FONTES
+    ========================== -->
+
+    <section
+      id="fontes"
+      class="sources-section"
+    >
+
+      <div class="container">
+
+        <div class="row g-4 align-items-start">
+
+
+          <div class="col-lg-5">
+
+            <span class="section-kicker">
+              Referências
+            </span>
+
+
+            <h2>
+              Conteúdo com fontes para continuar pesquisando.
+            </h2>
+
+
+            <p>
+
+              O VivaLíngua deve crescer com pesquisa e revisão.
+              Estas referências brasileiras ajudam a aprofundar
+              o estudo da língua e da variação.
+
+            </p>
+
+          </div>
+
+
+
+          <div class="col-lg-7">
+
+            <div class="source-grid">
+
+
+              <a
+                class="source-card"
+                href="https://www.academia.org.br/nossa-lingua/dicionario-da-lingua-portuguesa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+
+                <span class="source-logo">
+                  ABL
+                </span>
+
+
+                <div>
+
+                  <strong>
+                    Academia Brasileira de Letras
+                  </strong>
+
+                  <small>
+                    Dicionário da Língua Portuguesa
+                  </small>
+
+                </div>
+
+
+                <i class="bi bi-arrow-up-right"></i>
+
+              </a>
+
+
+
+              <a
+                class="source-card"
+                href="https://www.dicio.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+
+                <span class="source-logo">
+                  D
+                </span>
+
+
+                <div>
+
+                  <strong>
+                    Dicio
+                  </strong>
+
+                  <small>
+                    Dicionário Online de Português
+                  </small>
+
+                </div>
+
+
+                <i class="bi bi-arrow-up-right"></i>
+
+              </a>
+
+
+
+              <a
+                class="source-card"
+                href="https://publicacoes.epagri.sc.gov.br/DOC/article/download/1775/1612"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+
+                <span class="source-logo">
+
+                  <i class="bi bi-journal-text"></i>
+
+                </span>
+
+
+                <div>
+
+                  <strong>
+                    EPAGRI
+                  </strong>
+
+                  <small>
+                    Estudo sobre mandioca, etimologia e denominações
+                  </small>
+
+                </div>
+
+
+                <i class="bi bi-arrow-up-right"></i>
+
+              </a>
+
+
+
+              <a
+                class="source-card"
+                href="https://educapes.capes.gov.br/handle/capes/701622"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+
+                <span class="source-logo">
+
+                  <i class="bi bi-mortarboard"></i>
+
+                </span>
+
+
+                <div>
+
+                  <strong>
+                    eduCAPES / IFES
+                  </strong>
+
+                  <small>
+                    Materiais sobre variação e preconceito linguístico
+                  </small>
+
+                </div>
+
+
+                <i class="bi bi-arrow-up-right"></i>
+
+              </a>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <div class="row g-4">
+
+
+        <div class="col-lg-5">
+
+          <a
+            class="footer-brand"
+            href="#inicio"
+          >
+
+            Viva<span>Língua</span>
+
+          </a>
+
+
+          <p>
+
+            Uma palavra pode carregar um território inteiro.
+            Vamos escutar o Brasil.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="col-6 col-lg-2">
+
+          <h3>
+            Explorar
+          </h3>
+
+          <a href="#explorar">
+            Pesquisar
+          </a>
+
+          <a href="#palavra-do-dia">
+            Palavra do dia
+          </a>
+
+          <a href="#variacoes">
+            Variações
+          </a>
+
+        </div>
+
+
+
+        <div class="col-6 col-lg-2">
+
+          <h3>
+            Projeto
+          </h3>
+
+          <a href="#sobre">
+            Sobre
+          </a>
+
+          <a href="#contribua">
+            Contribua
+          </a>
+
+          <a href="#fontes">
+            Referências
+          </a>
+
+        </div>
+
+
+
+        <div class="col-lg-3">
+
+          <h3>
+            Mensagem
+          </h3>
+
+
+          <p class="footer-message">
+
+            “Não existe jeito errado de falar português —
+            existem jeitos diferentes,
+            cada um carregando uma história.”
+
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+
+          VivaLíngua ©
+
+          <span id="currentYear"></span>
+
+        </span>
+
+
+        <span>
+
+          Projeto acadêmico • Docente: Wanderson Timóteo
+
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =========================
+       TOAST
+  ========================== -->
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+    <div
+      id="siteToast"
+      class="toast custom-toast"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+
+      <div class="toast-body d-flex gap-3 align-items-center">
+
+        <i class="bi bi-check-circle-fill"></i>
+
+        <span id="toastMessage">
+          Ação realizada.
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- BOTÃO VOLTAR AO TOPO -->
+
+  <button
+    class="back-top"
+    id="backTop"
+    aria-label="Voltar ao topo"
+  >
+
+    <i class="bi bi-arrow-up"></i>
+
+  </button>
+
+
+
+  <!-- =========================
+       SCRIPTS
+  ========================== -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+
+  <script src="js/script.js"></script>
+
+
+</body>
+
+</html>
