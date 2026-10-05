@@ -37,7 +37,7 @@
     rel="stylesheet">
 
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="src/css/style.css">
 
 </head>
 
@@ -130,6 +130,71 @@
               <i class="bi bi-arrow-up-right ms-1"></i>
 
             </a>
+
+          </li>
+
+
+          <li class="nav-item ms-lg-2" id="navLogin">
+
+            <a class="nav-link" href="src/paginas/login.html">
+
+              Entrar
+
+            </a>
+
+          </li>
+
+
+          <li class="nav-item ms-lg-2 dropdown d-none" id="navUser">
+
+            <button
+              class="btn btn-nav dropdown-toggle d-flex align-items-center gap-2"
+              type="button"
+              id="navUserButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+
+              <i class="bi bi-person-circle fs-5" id="navUserIcon"></i>
+
+              <img id="navUserAvatar" class="nav-user-avatar d-none" alt="Avatar do usuário">
+
+              <span id="navUserName">Minha conta</span>
+
+            </button>
+
+
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navUserButton">
+
+              <li>
+
+                <a class="dropdown-item" href="src/paginas/perfil.html">
+
+                  <i class="bi bi-person me-2"></i>
+
+                  Meu perfil
+
+                </a>
+
+              </li>
+
+
+              <li><hr class="dropdown-divider"></li>
+
+
+              <li>
+
+                <a class="dropdown-item" href="#" id="navLogout">
+
+                  <i class="bi bi-box-arrow-right me-2"></i>
+
+                  Sair
+
+                </a>
+
+              </li>
+
+            </ul>
 
           </li>
 
@@ -2174,9 +2239,13 @@
   ></script>
 
 
-  <script src="js/script.js"></script>
+  <script src="src/js/script.js"></script>
+
+
+  <script src="src/js/auth.js"></script>
 
 
 </body>
 
 </html>
+
