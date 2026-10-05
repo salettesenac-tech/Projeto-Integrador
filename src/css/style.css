@@ -1419,5 +1419,214 @@ textarea.form-control {
   .daily-visual {
     min-height: 360px;
   }
+  }
 
-  
+/* =========================
+   PAGINAS DE AUTENTICACAO
+========================= */
+
+.auth-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 140px 0 80px;
+}
+
+.auth-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 40px;
+}
+
+.auth-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2.4rem;
+  margin: 8px 0 12px;
+  color: var(--ink);
+}
+
+.auth-lead {
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.auth-switch {
+  margin-top: 24px;
+  text-align: center;
+  color: var(--muted);
+}
+
+
+/* Ajustes do origin-box dentro do card branco do perfil */
+.auth-card .origin-box {
+  background: var(--cream);
+  border: 1px solid var(--line);
+}
+
+.auth-card .origin-box span {
+  color: var(--muted);
+}
+
+.auth-card .origin-box strong {
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.auth-card .origin-icon {
+  background: #E4EDE3;
+  color: var(--green-dark);
+}
+
+
+/* Avatar da página de perfil */
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 12px;
+  font-size: 4rem;
+  color: var(--green-dark);
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-avatar.has-image {
+  background-color: var(--line);
+}
+
+
+/* Avatar na navbar */
+.nav-user-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, .5);
+}
+
+
+/* Tema escuro */
+body.dark {
+  --paper: #16211D;
+  --cream: #1E2E28;
+  --ink: #EDF4F0;
+  --muted: #9DB5AC;
+  --line: #33514A;
+  --white: #22362F;
+}
+
+body.dark .form-control,
+body.dark .form-select {
+  background-color: var(--cream);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+body.dark .auth-card .origin-box {
+  background: var(--cream);
+  border-color: var(--line);
+}
+
+
+body.dark .floating-note strong,
+body.dark .floating-note small,
+body.dark .hero-stamp span,
+body.dark .hero-stamp small {
+  color: var(--ink);
+}
+
+body.dark .word-card h2,
+body.dark .word-card .word-pronunciation,
+body.dark .word-card .word-label {
+  color: var(--ink);
+}
+
+/* Ajustes para fundos claros fixos no index */
+body.dark .hero-section {
+  background: linear-gradient(135deg, #1C2A24 0%, #14201B 100%);
+}
+
+body.dark .floating-note,
+body.dark .hero-stamp {
+  background: #22362F;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+body.dark .search-box,
+body.dark .tag-btn {
+  background: #22362F;
+}
+
+body.dark .search-box input {
+  color: var(--ink);
+}
+
+body.dark .word-card {
+  background: #22362F;
+  color: var(--ink);
+}
+
+body.dark .map-region {
+  background: #2A443C;
+  color: var(--ink);
+}
+
+body.dark .audio-section {
+  background: #1B2823;
+}
+
+body.dark .audio-note {
+  background: #22362F;
+  color: var(--ink);
+}
+
+body.dark .contribute-card,
+body.dark .source-card {
+  background: #22362F;
+  border-color: var(--line);
+}
+
+
+/* Medidor de força da senha */
+.password-strength-bar {
+  height: 8px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.password-strength-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  transition: width .3s ease, background-color .3s ease;
+}
+
+
+/* Faz o footer ficar no final da tela em paginas curtas */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+.auth-section {
+  min-height: auto;
+}
+
+
