@@ -102,14 +102,15 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault();
 
             const name = document.getElementById("cadastroName").value.trim();
-            const region = document.getElementById("cadastroRegion").value;
+            const regionEl = document.getElementById("cadastroRegion");
+            const region = regionEl ? regionEl.value : "";
             const email = document.getElementById("cadastroEmail").value.trim();
             const phone = document.getElementById("cadastroPhone").value.trim();
             const password = document.getElementById("cadastroPassword").value;
             const confirm = document.getElementById("cadastroConfirm").value;
             const feedback = document.getElementById("cadastroFeedback");
 
-            if (!name || !region || !email || !password || !confirm) {
+            if (!name || !email || !password || !confirm) {
                 showFeedback(feedback, "Preencha todos os campos para continuar.");
                 return;
             }
@@ -325,6 +326,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ==============================
+    // OLHINHO DA SENHA
+    // ==============================
+    document.querySelectorAll(".password-toggle").forEach((btn) => {
+
+        btn.addEventListener("click", () => {
+
+            const target = document.getElementById(btn.dataset.target);
+
+            if (!target) return;
+
+
+            const icon = btn.querySelector("i");
+
+
+            if (target.type === "password") {
+
+                target.type = "text";
+
+                if (icon) icon.className = "bi bi-eye-slash";
+
+            } else {
+
+                target.type = "password";
+
+                if (icon) icon.className = "bi bi-eye";
+
+            }
+
+        });
+
+    });
+
+
+    // ==============================
     // MEDIDOR DE FORÇA DA SENHA
     // ==============================
     const passwordInput = document.getElementById("cadastroPassword");
@@ -341,8 +376,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const value = passwordInput.value;
 
 
+
             const checks = [
-                { ok: value.length >= 8, label: "8+ caracteres" },
+                { ok: value.length >= 8, label: "caracteres" },
                 { ok: /[A-Z]/.test(value), label: "maiúscula" },
                 { ok: /[a-z]/.test(value), label: "minúscula" },
                 { ok: /[0-9]/.test(value), label: "número" },
@@ -396,10 +432,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             strengthBarFill.style.backgroundColor = color;
 
-
             strengthText.textContent = value.length === 0
                 ? ""
-                : `Força: ${level}` + (missing.length ? ` — falta: ${missing.join(", ")}` : " — senha segura!");
+                : (missing.length ? `Falta: ${missing.join(", ")}` : "Senha segura!");
 
         });
 
@@ -429,7 +464,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         navUser.classList.remove("d-none");
 
-
         const navUserName = document.getElementById("navUserName");
 
         if (navUserName) {
@@ -457,6 +491,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    if (!session && (document.body.dataset.page === "editar" || document.body.dataset.page === "perfil" || document.body.dataset.page === "trocar")) {
+
+        window.location.href = "login.html";
+
+    }
+
+
     const navLogout = document.getElementById("navLogout");
 
     if (navLogout) {
@@ -467,7 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             localStorage.removeItem(SESSION_KEY);
 
-            window.location.href = document.body.dataset.page === "perfil"
+            window.location.href = (document.body.dataset.page === "perfil" || document.body.dataset.page === "editar" || document.body.dataset.page === "trocar")
                 ? "../../index.html"
                 : "index.html";
 
@@ -479,8 +520,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==============================
     // EDITAR INFORMAÇÕES
     // ==============================
-    const editInfoBtn = document.getElementById("editInfoBtn");
-
     const editPasswordBtn = document.getElementById("editPasswordBtn");
 
     const editInfoForm = document.getElementById("editInfoForm");
@@ -488,16 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const editPasswordForm = document.getElementById("editPasswordForm");
 
 
-    if (editInfoBtn && editInfoForm && editPasswordForm) {
-
-        editInfoBtn.addEventListener("click", () => {
-
-            editInfoForm.classList.toggle("d-none");
-
-            editPasswordForm.classList.add("d-none");
-
-        });
-
+    if (editInfoForm) {
 
         const usersNow = getUsers();
 
@@ -510,9 +540,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.getElementById("editName").value = currentUser.name || "";
 
-            document.getElementById("editRegion").value = currentUser.region || "";
+            const editRegionEl = document.getElementById("editRegion");
+
+            if (editRegionEl) editRegionEl.value = currentUser.region || "";
+
+            const editEmailEl = document.getElementById("editEmail");
+
+            if (editEmailEl) editEmailEl.value = currentUser.email || "";
 
             document.getElementById("editPhone").value = currentUser.phone || "";
+
+            const editCulturaEl = document.getElementById("editCultura");
+
+            if (editCulturaEl) editCulturaEl.value = currentUser.cultura || "";
 
         }
 
@@ -524,17 +564,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const name = document.getElementById("editName").value.trim();
 
-            const region = document.getElementById("editRegion").value;
+            const editRegionEl = document.getElementById("editRegion");
+
+            const region = editRegionEl ? editRegionEl.value : undefined;
 
             const phone = document.getElementById("editPhone").value.trim();
+
+
+            const editEmailEl = document.getElementById("editEmail");
+
+            const email = editEmailEl ? editEmailEl.value.trim() : undefined;
+
+
+            const editCulturaEl = document.getElementById("editCultura");
+
+            const cultura = editCulturaEl ? editCulturaEl.value : undefined;
 
 
             const feedback = document.getElementById("editInfoFeedback");
 
 
-            if (!name || !region) {
+            if (!name) {
 
-                showFeedback(feedback, "Preencha nome e região.");
+                showFeedback(feedback, "Preencha o nome.");
+
+                return;
+
+            }
+
+
+            if (email !== undefined && !isValidEmail(email)) {
+
+                showFeedback(feedback, "Digite um e-mail válido.");
 
                 return;
 
@@ -566,24 +627,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
             users[idx].name = name;
 
-            users[idx].region = region;
+            if (editRegionEl) users[idx].region = region;
 
             users[idx].phone = phone;
+
+            if (email !== undefined) users[idx].email = email;
+
+            if (cultura !== undefined) users[idx].cultura = cultura;
 
             saveUsers(users);
 
 
-            localStorage.setItem(SESSION_KEY, JSON.stringify({ name, email: session.email }));
+            localStorage.setItem(SESSION_KEY, JSON.stringify({ name, email: email !== undefined ? email : session.email }));
 
 
-            document.getElementById("profileName").textContent = name;
+            const profileNameEl = document.getElementById("profileName");
 
-            document.getElementById("profileRegion").textContent = region;
-
-            document.getElementById("profilePhone").textContent = phone || "—";
+            if (profileNameEl) profileNameEl.textContent = name;
 
 
-            showFeedback(feedback, "Informações atualizadas com sucesso!");
+            const profileRegionEl = document.getElementById("profileRegion");
+
+            if (profileRegionEl && region) profileRegionEl.textContent = region;
+
+
+            const profilePhoneEl = document.getElementById("profilePhone");
+
+            if (profilePhoneEl) profilePhoneEl.textContent = phone || "—";
+
+
+            const profileCulturaEl = document.getElementById("profileCultura");
+
+            if (profileCulturaEl) profileCulturaEl.textContent = cultura || "—";
+
+
+            const profileEmailEl = document.getElementById("profileEmail");
+
+            if (profileEmailEl && email !== undefined) profileEmailEl.textContent = email;
+
+
+            let msg = "Informações atualizadas com sucesso!";
+
+            if (cultura) msg += ` Você receberá notificações sobre: ${cultura}.`;
+
+            showFeedback(feedback, msg);
+
+
+            setTimeout(() => {
+                window.location.href = "perfil.html";
+            }, 1500);
 
         });
 
@@ -593,16 +685,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==============================
     // TROCAR SENHA
     // ==============================
-    if (editPasswordBtn && editPasswordForm) {
-
-        editPasswordBtn.addEventListener("click", () => {
-
-            editPasswordForm.classList.toggle("d-none");
-
-            if (editInfoForm) editInfoForm.classList.add("d-none");
-
-        });
-
+    if (editPasswordForm) {
 
         editPasswordForm.addEventListener("submit", (event) => {
 
@@ -666,6 +749,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             showFeedback(feedback, "Senha atualizada com sucesso!");
 
+            setTimeout(() => {
+                window.location.href = "perfil.html";
+            }, 1500);
+
         });
 
     }
@@ -707,6 +794,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (profilePhone) {
 
             profilePhone.textContent = user && user.phone ? user.phone : "—";
+
+        }
+
+
+        const profileCulturaEl = document.getElementById("profileCultura");
+
+        if (profileCulturaEl) {
+
+            profileCulturaEl.textContent = user && user.cultura ? user.cultura : "—";
 
         }
 
