@@ -29,6 +29,17 @@ function normalizePhone(phone) {
 }
 
 
+function maskPhone(phone) {
+
+    const digits = normalizePhone(phone);
+
+    if (digits.length < 4) return "••••";
+
+    return "+**" + "*".repeat(Math.max(digits.length - 4, 4)) + digits.slice(-2);
+
+}
+
+
 function isValidPhone(phone) {
 
     const digits = normalizePhone(phone);
@@ -215,6 +226,184 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ==============================
+    // ESQUECI MINHA SENHA (LOGIN)
+    // ==============================
+    const forgotLink = document.getElementById("forgotLink");
+
+    const forgotForm = document.getElementById("forgotForm");
+
+
+    if (forgotLink && forgotForm) {
+
+        forgotLink.addEventListener("click", (event) => {
+
+            event.preventDefault();
+
+            forgotForm.classList.toggle("d-none");
+
+        });
+
+
+        document.getElementById("forgotSubmit").addEventListener("click", () => {
+            const event = { preventDefault: () => {} };
+            submitForgot(event);
+        });
+
+        function submitForgot(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("forgotEmail").value.trim();
+
+            const feedback = document.getElementById("forgotFeedback");
+
+
+            if (!email) {
+
+                showFeedback(feedback, "Informe o e-mail ou telefone.");
+
+                return;
+
+            }
+
+
+            const users = getUsers();
+
+            const user = users.find(
+                (u) => u.email.toLowerCase() === email.toLowerCase() || (u.phone && normalizePhone(u.phone) === normalizePhone(email) && normalizePhone(email).length >= 10)
+            );
+
+
+            if (!user) {
+
+                showFeedback(feedback, "Conta não encontrada com esses dados.");
+
+                return;
+
+            }
+
+
+            localStorage.setItem("vivalingua_reset_email", user.email);
+
+            window.location.href = "codigo.html";
+
+        }
+
+    }
+
+
+    // ==============================
+    // CÓDIGO DE RECUPERAÇÃO
+    // ==============================
+    const resetForm = document.getElementById("resetForm");
+
+
+    if (resetForm) {
+
+        const pendingEmail = localStorage.getItem("vivalingua_reset_email");
+
+        const resetEmailLabel = document.getElementById("resetEmailLabel");
+
+        if (resetEmailLabel && pendingEmail) resetEmailLabel.textContent = pendingEmail;
+
+
+        resetForm.addEventListener("submit", (event) => {
+
+            event.preventDefault();
+
+
+            const code = document.getElementById("resetCode").value.trim();
+
+            const feedback = document.getElementById("resetFeedback");
+
+
+            if (code.length < 4) {
+
+                showFeedback(feedback, "Digite o código enviado.");
+
+                return;
+
+            }
+
+
+            window.location.href = "trocar-senha.html";
+
+        });
+
+    }
+
+
+    // ==============================
+    // ESQUECI MINHA SENHA - PÁGINA PRÓPRIA
+    // ==============================
+    const recoverForm = document.getElementById("recoverForm");
+
+
+    if (recoverForm) {
+
+        recoverForm.addEventListener("submit", (event) => {
+
+            event.preventDefault();
+
+
+            const value = document.getElementById("recoverInput").value.trim();
+
+            const feedback = document.getElementById("recoverFeedback");
+
+
+            if (!value) {
+
+                showFeedback(feedback, "Informe seu número, usuário ou e-mail.");
+
+                return;
+
+            }
+
+
+            const users = getUsers();
+
+            const user = users.find(
+                (u) => u.email.toLowerCase() === value.toLowerCase() || u.name.toLowerCase() === value.toLowerCase() || (u.phone && normalizePhone(u.phone) === normalizePhone(value) && normalizePhone(value).length >= 10)
+            );
+
+
+            if (!user) {
+
+                showFeedback(feedback, "Conta não encontrada com esses dados.");
+
+                return;
+
+            }
+
+
+            localStorage.setItem("vivalingua_reset_email", user.email);
+
+            document.getElementById("recoverCard").classList.add("d-none");
+
+            const sentCard = document.getElementById("sentCard");
+
+            sentCard.classList.remove("d-none");
+
+            document.getElementById("sentMessage").textContent = `Enviamos um link de redefinição de senha por SMS para ${user.phone ? maskPhone(user.phone) : "o seu número cadastrado"}. Toque no link para redefinir sua senha.`;
+
+        });
+
+
+        const sentOk = document.getElementById("sentOk");
+
+        if (sentOk) {
+
+            sentOk.addEventListener("click", () => {
+
+                window.location.href = "codigo.html";
+
+            });
+
+        }
+
+    }
+
+
+    // ==============================
     // AVATAR PERSONALIZADO
     // ==============================
     const avatarInput = document.getElementById("avatarInput");
@@ -288,7 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (theme === "dark") {
 
-            document.body.classList.add("dark");
+            document.documentElement.classList.add("dark");
 
             if (themeIcon) themeIcon.className = "bi bi-moon-fill";
 
@@ -296,7 +485,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } else {
 
-            document.body.classList.remove("dark");
+            document.documentElement.classList.remove("dark");
 
             if (themeIcon) themeIcon.className = "bi bi-sun-fill";
 
@@ -314,7 +503,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         themeToggle.addEventListener("click", () => {
 
-            const next = document.body.classList.contains("dark") ? "light" : "dark";
+            const next = document.documentElement.classList.contains("dark") ? "light" : "dark";
 
             localStorage.setItem("vivalingua_theme", next);
 
@@ -491,7 +680,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (!session && (document.body.dataset.page === "editar" || document.body.dataset.page === "perfil" || document.body.dataset.page === "trocar")) {
+    if (!session && (document.body.dataset.page === "editar" || document.body.dataset.page === "perfil")) {
 
         window.location.href = "login.html";
 
@@ -692,7 +881,7 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault();
 
 
-            const currentPassword = document.getElementById("currentPassword").value;
+            const currentPassword = document.getElementById("currentPassword") ? document.getElementById("currentPassword").value : "";
 
             const newPassword = document.getElementById("newPassword").value;
 
@@ -702,9 +891,20 @@ document.addEventListener("DOMContentLoaded", () => {
             const feedback = document.getElementById("editPasswordFeedback");
 
 
+            const pendingEmail = localStorage.getItem("vivalingua_reset_email");
+
+
             const users = getUsers();
 
-            const idx = users.findIndex((u) => u.email.toLowerCase() === session.email.toLowerCase());
+            if (pendingEmail && document.getElementById("currentPassword")) {
+
+                const grp = document.getElementById("currentPassword").closest(".mb-3");
+
+                if (grp) grp.style.display = "none";
+
+            }
+
+            const idx = users.findIndex((u) => u.email === pendingEmail || (session && u.email.toLowerCase() === session.email.toLowerCase()));
 
 
             if (idx === -1) {
@@ -716,7 +916,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            if (users[idx].password !== currentPassword) {
+            if (!pendingEmail && users[idx].password !== currentPassword) {
 
                 showFeedback(feedback, "A senha atual está incorreta.");
 
@@ -747,11 +947,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
             saveUsers(users);
 
-            showFeedback(feedback, "Senha atualizada com sucesso!");
+            if (pendingEmail) {
 
-            setTimeout(() => {
-                window.location.href = "perfil.html";
-            }, 1500);
+                localStorage.removeItem("vivalingua_reset_email");
+
+                showFeedback(feedback, "Senha redefinida com sucesso! Redirecionando para o login...");
+
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 1500);
+
+            } else {
+
+                showFeedback(feedback, "Senha atualizada com sucesso!");
+
+                setTimeout(() => {
+                    window.location.href = "perfil.html";
+                }, 1500);
+
+            }
 
         });
 

@@ -1539,7 +1539,7 @@ textarea.form-control {
 
 
 /* Tema escuro */
-body.dark {
+html.dark {
   --paper: #16211D;
   --cream: #1E2E28;
   --ink: #EDF4F0;
@@ -1548,142 +1548,183 @@ body.dark {
   --white: #22362F;
 }
 
-body.dark .form-control,
-body.dark .form-select {
-  background-color: var(--cream);
-  color: var(--ink);
+html.dark .form-control,
+html.dark .form-select {
+  background-color: #2A443C;
+  color: #F2F6F4;
   border-color: var(--line);
 }
 
-body.dark .auth-card .origin-box {
+html.dark .form-control::placeholder {
+  color: #9DB5AC;
+  opacity: 1;
+}
+
+html.dark .auth-card .origin-box {
   background: var(--cream);
   border-color: var(--line);
 }
 
 
-body.dark .floating-note strong,
-body.dark .floating-note small,
-body.dark .hero-stamp span,
-body.dark .hero-stamp small {
+html.dark .floating-note strong,
+html.dark .floating-note small,
+html.dark .hero-stamp span,
+html.dark .hero-stamp small {
   color: var(--ink);
 }
 
-body.dark .word-card h2,
-body.dark .word-card .word-pronunciation,
-body.dark .word-card .word-label {
+html.dark .word-card h2,
+html.dark .word-card .word-pronunciation,
+html.dark .word-card .word-label {
   color: var(--ink);
 }
 
 /* Ajustes para fundos claros fixos no index */
-body.dark .hero-section {
+html.dark .hero-section {
   background: linear-gradient(135deg, #1C2A24 0%, #14201B 100%);
 }
 
-body.dark .floating-note,
-body.dark .hero-stamp {
+html.dark .floating-note,
+html.dark .hero-stamp {
   background: #22362F;
   color: var(--ink);
   border-color: var(--line);
 }
 
-body.dark .search-box,
-body.dark .tag-btn {
+html.dark .search-box,
+html.dark .tag-btn {
   background: #22362F;
 }
 
-body.dark .search-box input {
+html.dark .search-box input {
   color: var(--ink);
 }
 
-body.dark .word-card {
+html.dark .word-card {
   background: #22362F;
   color: var(--ink);
 }
 
-body.dark .map-region {
+html.dark .map-region {
   background: #2A443C;
   color: var(--ink);
 }
 
-body.dark .audio-section {
+html.dark .audio-section {
   background: #1B2823;
 }
 
-body.dark .audio-note {
+html.dark .audio-note {
   background: #22362F;
   color: var(--ink);
 }
 
-body.dark .contribute-card,
-body.dark .source-card {
+html.dark .contribute-card,
+html.dark .source-card {
   background: #22362F;
   border-color: var(--line);
 }
 
-body.dark .navbar {
+html.dark .navbar {
   background: rgba(22, 33, 29, .92);
 }
 
-body.dark .navbar .nav-link,
-body.dark .navbar-brand span {
+html.dark .navbar .nav-link,
+html.dark .navbar-brand span {
   color: var(--ink);
 }
 
-body.dark .dropdown-menu {
+html.dark .dropdown-menu {
   background: #22362F;
   border: 1px solid var(--line);
 }
 
-body.dark .dropdown-item {
+html.dark .dropdown-item {
   color: var(--ink);
 }
 
-body.dark .dropdown-item:hover {
+html.dark .dropdown-item:hover {
   background: #2A443C;
 }
 
-body.dark .feature-card-main {
+html.dark .feature-card-main {
   background: #22362F;
   border-color: var(--line);
 }
 
-body.dark .note-icon,
-body.dark .mini-map {
+html.dark .note-icon,
+html.dark .mini-map {
   background: #2A443C;
 }
 
-body.dark .card-icon.orange { background: #4A3A2A; }
-body.dark .card-icon.green  { background: #2A443C; }
-body.dark .card-icon.blue   { background: #23403D; }
+html.dark .card-icon.orange { background: #4A3A2A; }
+html.dark .card-icon.green  { background: #2A443C; }
+html.dark .card-icon.blue   { background: #23403D; }
 
-body.dark .region-pill,
-body.dark .map-region {
+html.dark .region-pill,
+html.dark .map-region {
   background: #2A443C;
 }
 
-body.dark .callout {
+html.dark .callout {
   background: #22362F;
   color: var(--ink);
 }
 
-body.dark .team-card {
+html.dark .team-card {
   background: #22362F;
   border-color: var(--line);
 }
 
-body.dark .origin-box {
+html.dark .origin-box {
   background: #22362F;
   border-color: var(--line);
 }
 
-body.dark .mini-info {
+html.dark .mini-info {
   background: rgba(255,255,255,.04);
 }
 
-body.dark .back-top {
+html.dark .back-top {
   background: #22362F;
   color: var(--ink);
   border-color: var(--line);
+}
+
+html.dark .search-results {
+  background: #22362F;
+  border-color: var(--line);
+}
+
+html.dark .search-result-definition {
+  color: var(--muted);
+}
+
+html.dark .result-chip {
+  background: #2A443C;
+  color: var(--ink);
+}
+
+html.dark .search-result-word {
+  color: #7FBFA0;
+}
+
+html.dark .search-results .card {
+  background: #22362F;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+html.dark .search-results .card .text-success {
+  color: #7FBFA0 !important;
+}
+
+html.dark .search-results .card p {
+  color: var(--muted);
+}
+
+html.dark .search-results .card strong {
+  color: var(--ink);
 }
 
 
@@ -1722,6 +1763,7 @@ main {
 .auth-section {
   min-height: auto;
 }
+
 
 
 

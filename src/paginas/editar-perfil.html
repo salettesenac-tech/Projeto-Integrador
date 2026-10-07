@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -35,6 +35,8 @@
 
 
   <link rel="stylesheet" href="../css/style.css">
+
+  <script>try{if(localStorage.getItem("vivalingua_theme")==="dark")document.documentElement.classList.add("dark")}catch(e){}</script>
 
 </head>
 
@@ -86,7 +88,21 @@
         </li>
 
 
-        <li class="nav-item ms-lg-2 dropdown d-none" id="navUser">
+
+          <li class="nav-item ms-lg-2">
+
+            <button
+              class="btn btn-nav"
+              type="button"
+              id="themeToggle"
+              aria-label="Alternar tema claro/escuro"
+            >
+
+              <i class="bi bi-sun-fill" id="themeIcon"></i>
+
+            </button>
+
+          </li>        <li class="nav-item ms-lg-2 dropdown d-none" id="navUser">
 
           <button
             class="btn btn-nav dropdown-toggle d-flex align-items-center gap-2"
@@ -118,6 +134,18 @@
               </a>
 
             </li>
+
+              <li>
+
+                <a class="dropdown-item" href="historicos.html">
+
+                  <i class="bi bi-clock-history me-2"></i>
+
+                  Históricos
+
+                </a>
+
+              </li>
 
 
             <li><hr class="dropdown-divider"></li>
@@ -296,3 +324,7 @@
 </body>
 
 </html>
+
+
+
+

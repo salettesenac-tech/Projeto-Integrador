@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
 
     // ==============================
     // Navbar dinâmica + botão topo
@@ -410,6 +410,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!resultado) {
             return;
+        }
+
+        // salva o histórico de pesquisas
+        if (termo) {
+            try {
+                const buscas = JSON.parse(localStorage.getItem("vivalingua_searches") || "[]");
+                buscas.unshift({ termo, data: new Date().toISOString() });
+                localStorage.setItem("vivalingua_searches", JSON.stringify(buscas.slice(0, 30)));
+            } catch (e) {}
         }
 
         resultado.classList.remove("d-none");
@@ -1022,98 +1031,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-
-
-    // ==================================
-    // FORMULÁRIO COLABORATIVO
-    // ==================================
-
-    const formulario =
-        document.getElementById(
-            "contributionForm"
-        );
-
-    const feedback =
-        document.getElementById(
-            "contributionFeedback"
-        );
-
-
-    if (formulario) {
-
-        formulario.addEventListener(
-            "submit",
-            (event) => {
-
-                event.preventDefault();
-
-
-                if (!formulario.checkValidity()) {
-
-                    formulario.classList.add(
-                        "was-validated"
-                    );
-
-                    return;
-
-                }
-
-
-                const palavra =
-                    document.getElementById(
-                        "contribWord"
-                    ).value;
-
-
-                const regiao =
-                    document.getElementById(
-                        "contribRegion"
-                    ).value;
-
-
-                if (feedback) {
-
-                    feedback.classList.remove(
-                        "d-none"
-                    );
-
-
-                    feedback.innerHTML = `
-
-                        ✅ Obrigado!
-
-                        A expressão
-                        <strong>${palavra}</strong>,
-
-                        enviada da região
-                        <strong>${regiao}</strong>,
-
-                        foi registrada como demonstração
-                        do projeto VivaLíngua.
-
-                    `;
-
-                }
-
-
-                formulario.reset();
-
-                formulario.classList.remove(
-                    "was-validated"
-                );
-
-
-                mostrarToast(
-                    "Contribuição enviada com sucesso!"
-                );
-
-            }
-        );
-
-    }
-
-
-
     // ==================================
     // TOAST BOOTSTRAP
     // ==================================
@@ -1157,4 +1074,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
+    // ==================================
+    // HISTÓRICO DE CONTRIBUIÇÕES
+    // ==================================
+
+    const formContribuicoes = document.getElementById("contributionForm");
+
+    const feedbackContribuicao = document.getElementById("contributionFeedback");
+
+    if (formContribuicoes) {
+
+        formContribuicoes.addEventListener("submit", (event) => {
+
+            event.preventDefault();
+
+            if (!formContribuicoes.checkValidity()) {
+
+                formContribuicoes.classList.add("was-validated");
+
+                return;
+
+            }
+
+            const palavra = document.getElementById("contribWord").value.trim();
+
+            const regiao = document.getElementById("contribRegion").value;
+
+            const significado = document.getElementById("contribMeaning").value.trim();
+
+            const contexto = document.getElementById("contribContext").value.trim();
+
+            try {
+
+                const contribs = JSON.parse(localStorage.getItem("vivalingua_contributions") || "[]");
+
+                contribs.unshift({ palavra, regiao, significado, contexto, data: new Date().toISOString() });
+
+                localStorage.setItem("vivalingua_contributions", JSON.stringify(contribs.slice(0, 50)));
+
+            } catch (e) {}
+
+            if (feedbackContribuicao) {
+
+                feedbackContribuicao.classList.remove("d-none");
+
+                feedbackContribuicao.innerHTML = `Obrigado! A expressão <strong>${palavra}</strong>, enviada da região <strong>${regiao}</strong>, foi registrada.`;
+
+            }
+
+            formContribuicoes.reset();
+
+            formContribuicoes.classList.remove("was-validated");
+
+            mostrarToast("Contribuição enviada com sucesso!");
+
+        });
+
+    }
+
 });
+
