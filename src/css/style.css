@@ -52,7 +52,7 @@ select {
   top: -60px;
   z-index: 9999;
   background: var(--ink);
-  color: var(--white);
+  color: #F2F6F4;
   padding: 10px 16px;
   border-radius: 8px;
   text-decoration: none;
@@ -89,7 +89,7 @@ select {
   height: 39px;
   border-radius: 12px;
   background: var(--green-dark);
-  color: var(--white);
+  color: #F2F6F4;
   transform: rotate(-3deg);
 }
 
@@ -111,7 +111,7 @@ select {
 }
 
 .btn-nav {
-  color: var(--white);
+  color: #F2F6F4;
   background: var(--green-dark);
   border-radius: 999px;
   padding: .62rem 1.1rem;
@@ -120,7 +120,7 @@ select {
 }
 
 .btn-nav:hover {
-  color: var(--white);
+  color: #F2F6F4;
   background: var(--orange);
   border-color: var(--orange);
 }
@@ -241,7 +241,7 @@ select {
   border: 0;
   border-radius: 13px;
   padding: 12px 20px;
-  color: var(--white);
+  color: #F2F6F4;
   background: var(--orange);
   font-weight: 700;
   transition: .2s ease;
@@ -389,7 +389,7 @@ select {
 
 .manifesto-strip {
   padding: 23px 0;
-  color: var(--white);
+  color: #F2F6F4;
   background: var(--green-dark);
 }
 
@@ -499,7 +499,7 @@ select {
 .daily-section {
   overflow: hidden;
   background: var(--green-dark);
-  color: var(--white);
+  color: #F2F6F4;
 }
 
 .daily-section .section-kicker {
@@ -507,7 +507,7 @@ select {
 }
 
 .daily-section .display-title {
-  color: var(--white);
+  color: #F2F6F4;
 }
 
 .lead-copy {
@@ -586,7 +586,7 @@ select {
   place-items: center;
   border: 0;
   border-radius: 50%;
-  color: var(--white);
+  color: #F2F6F4;
   background: var(--orange);
   box-shadow: 0 8px 20px rgba(184,111,53,.22);
   transition: .2s ease;
@@ -644,7 +644,7 @@ select {
 }
 
 .origin-box strong {
-  color: var(--white);
+  color: #F2F6F4;
 }
 
 .origin-box p {
@@ -752,7 +752,7 @@ select {
 
 .map-region:hover,
 .map-region.active {
-  color: var(--white);
+  color: #F2F6F4;
   background: var(--orange);
   border-color: var(--orange);
   transform: scale(1.06);
@@ -964,7 +964,7 @@ select {
   background:
     radial-gradient(circle at 90% 10%, rgba(159,184,143,.32), transparent 30%),
     var(--green-dark);
-  color: var(--white);
+  color: #F2F6F4;
   box-shadow: var(--shadow);
 }
 
@@ -1031,13 +1031,13 @@ textarea.form-control {
   border: 0;
   border-radius: 11px;
   padding: 11px 17px;
-  color: var(--white);
+  color: #F2F6F4;
   background: var(--orange);
   font-weight: 800;
 }
 
 .btn-primary-custom:hover {
-  color: var(--white);
+  color: #F2F6F4;
   background: var(--orange-dark);
 }
 
@@ -1153,7 +1153,7 @@ textarea.form-control {
   display: grid;
   place-items: center;
   border-radius: 12px;
-  color: var(--white);
+  color: #F2F6F4;
   background: var(--green-dark);
   font-size: .8rem;
   font-weight: 900;
@@ -1193,7 +1193,7 @@ textarea.form-control {
 .footer-brand {
   display: inline-block;
   margin-bottom: 12px;
-  color: var(--white);
+  color: #F2F6F4;
   font-family: "Playfair Display", Georgia, serif;
   font-size: 1.8rem;
   font-weight: 800;
@@ -1228,7 +1228,7 @@ textarea.form-control {
 }
 
 .footer a:not(.footer-brand):hover {
-  color: var(--white);
+  color: #F2F6F4;
 }
 
 .footer-message {
@@ -1332,7 +1332,7 @@ textarea.form-control {
 }
 
 .back-top:hover {
-  color: var(--white);
+  color: #F2F6F4;
   background: var(--orange);
   border-color: var(--orange);
 }
@@ -1500,6 +1500,34 @@ textarea.form-control {
 }
 
 
+/* Campo de senha com botão de olhinho */
+.password-field {
+  position: relative;
+}
+
+.password-field .form-control {
+  padding-right: 42px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.password-toggle:hover {
+  color: var(--green-dark);
+}
+
+
 /* Avatar na navbar */
 .nav-user-avatar {
   width: 26px;
@@ -1592,6 +1620,72 @@ body.dark .source-card {
   border-color: var(--line);
 }
 
+body.dark .navbar {
+  background: rgba(22, 33, 29, .92);
+}
+
+body.dark .navbar .nav-link,
+body.dark .navbar-brand span {
+  color: var(--ink);
+}
+
+body.dark .dropdown-menu {
+  background: #22362F;
+  border: 1px solid var(--line);
+}
+
+body.dark .dropdown-item {
+  color: var(--ink);
+}
+
+body.dark .dropdown-item:hover {
+  background: #2A443C;
+}
+
+body.dark .feature-card-main {
+  background: #22362F;
+  border-color: var(--line);
+}
+
+body.dark .note-icon,
+body.dark .mini-map {
+  background: #2A443C;
+}
+
+body.dark .card-icon.orange { background: #4A3A2A; }
+body.dark .card-icon.green  { background: #2A443C; }
+body.dark .card-icon.blue   { background: #23403D; }
+
+body.dark .region-pill,
+body.dark .map-region {
+  background: #2A443C;
+}
+
+body.dark .callout {
+  background: #22362F;
+  color: var(--ink);
+}
+
+body.dark .team-card {
+  background: #22362F;
+  border-color: var(--line);
+}
+
+body.dark .origin-box {
+  background: #22362F;
+  border-color: var(--line);
+}
+
+body.dark .mini-info {
+  background: rgba(255,255,255,.04);
+}
+
+body.dark .back-top {
+  background: #22362F;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
 
 /* Medidor de força da senha */
 .password-strength-bar {
@@ -1628,5 +1722,6 @@ main {
 .auth-section {
   min-height: auto;
 }
+
 
 
