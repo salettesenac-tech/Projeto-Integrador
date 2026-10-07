@@ -127,31 +127,16 @@
 
                   <div class="col-md-6">
 
-                    <label for="cadastroRegion" class="form-label">
-                      Região
+                    <label for="cadastroPhone" class="form-label">
+                      Telefone (opcional)
                     </label>
 
-                    <select
-                      id="cadastroRegion"
-                      class="form-select"
-                      required
+                    <input
+                      id="cadastroPhone"
+                      class="form-control"
+                      type="tel"
+                      placeholder="(00) 00000-0000"
                     >
-
-                      <option value="">
-                        Selecione...
-                      </option>
-
-                      <option>Norte</option>
-
-                      <option>Nordeste</option>
-
-                      <option>Centro-Oeste</option>
-
-                      <option>Sudeste</option>
-
-                      <option>Sul</option>
-
-                    </select>
 
                   </div>
 
@@ -173,40 +158,27 @@
                   </div>
 
 
-                  <div class="col-md-6">
-
-                    <label for="cadastroPhone" class="form-label">
-                      Telefone (opcional)
-                    </label>
-
-                    <input
-                      id="cadastroPhone"
-                      class="form-control"
-                      type="tel"
-                      placeholder="(00) 00000-0000"
-                    >
-
-                  </div>
-
-
-                  <div class="col-md-6">
+                  <div class="col-12">
 
                     <label for="cadastroPassword" class="form-label">
                       Senha
                     </label>
 
-                    <small class="form-note d-block mt-1">
-                      Mínimo 8 caracteres, com maiúscula, minúscula, número e símbolo.
-                    </small>
 
-
-                    <input
+                    <div class="password-field">
+                      <input
                       id="cadastroPassword"
                       class="form-control"
                       type="password"
                       placeholder="Crie uma senha"
                       required
                     >
+
+
+                      <button type="button" class="password-toggle" data-target="cadastroPassword" aria-label="Mostrar/ocultar senha"><i class="bi bi-eye"></i></button>
+
+
+                    </div>
 
 
                     <div class="password-strength mt-2">
@@ -225,19 +197,24 @@
                   </div>
 
 
-                  <div class="col-md-6">
+                  <div class="col-12">
 
                     <label for="cadastroConfirm" class="form-label">
                       Confirmar senha
                     </label>
 
-                    <input
+                    <div class="password-field">
+                      <input
                       id="cadastroConfirm"
                       class="form-control"
                       type="password"
                       placeholder="Repita a senha"
                       required
                     >
+
+                      <button type="button" class="password-toggle" data-target="cadastroConfirm" aria-label="Mostrar/ocultar senha"><i class="bi bi-eye"></i></button>
+
+                    </div>
 
                   </div>
 
@@ -376,3 +353,7 @@
 </body>
 
 </html>
+
+
+
+
