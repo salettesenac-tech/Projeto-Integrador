@@ -9,6 +9,8 @@
 
   <meta name="description" content="Históricos do VivaLíngua.">
 
+  <meta name="theme-color" content="#476E63">
+
   <title>VivaLíngua | Históricos</title>
 
 
@@ -70,6 +72,9 @@
           <a class="nav-link" href="login.html">Entrar</a>
 
         </li>
+
+
+        <li class="nav-item ms-lg-2"><button class="btn btn-nav" type="button" id="themeToggle" aria-label="Alternar tema claro/escuro"><i class="bi bi-sun-fill" id="themeIcon"></i></button></li>
 
 
         <li class="nav-item ms-lg-2 dropdown d-none" id="navUser">
@@ -185,14 +190,14 @@
 
                 <div class="tab-pane fade show active" id="pane-searches" role="tabpanel">
 
-                  <ul id="searchList" class="list-group"></ul>
+                  <div id="searchList" class="accordion history-accordion"></div>
 
                 </div>
 
 
                 <div class="tab-pane fade" id="pane-contributions" role="tabpanel">
 
-                  <ul id="contributionList" class="list-group"></ul>
+                  <div id="contributionList" class="accordion history-accordion"></div>
 
                 </div>
 
@@ -236,39 +241,7 @@
   <script src="../js/auth.js"></script>
 
 
-  <script>
-
-    document.addEventListener("DOMContentLoaded", () => {
-
-      const searches = JSON.parse(localStorage.getItem("vivalingua_searches") || "[]");
-
-      const contributions = JSON.parse(localStorage.getItem("vivalingua_contributions") || "[]");
-
-
-      const searchList = document.getElementById("searchList");
-
-      if (searchList) {
-
-        searchList.innerHTML = searches.length
-          ? searches.map((s) => `<li class="list-group-item d-flex justify-content-between align-items-center"><span><i class="bi bi-search me-2"></i>${s.termo}</span><small class="text-muted">${new Date(s.data).toLocaleDateString("pt-BR")}</small></li>`).join("")
-          : `<li class="list-group-item text-muted">Nenhuma palavra pesquisada ainda.</li>`;
-
-      }
-
-
-      const contributionList = document.getElementById("contributionList");
-
-      if (contributionList) {
-
-        contributionList.innerHTML = contributions.length
-          ? contributions.map((c) => `<li class="list-group-item"><strong>${c.palavra}</strong> <small class="text-muted">— ${c.regiao} — ${new Date(c.data).toLocaleDateString("pt-BR")}</small><br><small>${c.significado}</small></li>`).join("")
-          : `<li class="list-group-item text-muted">Nenhuma contribuição ainda.</li>`;
-
-      }
-
-    });
-
-  </script>
+  <script src="../js/historico.js"></script>
 
 </body>
 

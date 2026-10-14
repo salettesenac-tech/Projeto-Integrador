@@ -110,6 +110,65 @@ select {
   color: var(--orange);
 }
 
+/* Abas internas (ex: página de Históricos) */
+.nav-tabs {
+  --bs-nav-tabs-border-color: var(--line);
+  --bs-nav-tabs-link-hover-border-color: transparent;
+  --bs-nav-tabs-link-active-color: var(--green-dark);
+  --bs-nav-tabs-link-active-bg: transparent;
+  --bs-nav-tabs-link-active-border-color: transparent transparent var(--green-dark);
+  border-bottom: 1px solid var(--line);
+  gap: .25rem;
+}
+
+.nav-tabs .nav-link {
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: .6rem .9rem !important;
+}
+
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  color: var(--green-dark);
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--green-dark);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--green-dark);
+  font-weight: 700;
+}
+
+html.dark .nav-tabs {
+  --bs-nav-tabs-border-color: var(--line);
+  --bs-nav-tabs-link-active-color: var(--green-light);
+  --bs-nav-tabs-link-active-border-color: transparent transparent var(--green-light);
+}
+
+html.dark .nav-tabs .nav-link {
+  color: var(--muted);
+}
+
+html.dark .nav-tabs .nav-link:hover,
+html.dark .nav-tabs .nav-link:focus,
+html.dark .nav-tabs .nav-link.active {
+  color: var(--green-light);
+}
+
+html.dark .nav-tabs .nav-link.active {
+  border-bottom: 2px solid var(--green-light);
+}
+
+/* Texto secundário seguindo a paleta do site (Bootstrap usa cinza escuro) */
+.text-muted {
+  color: var(--muted) !important;
+}
+
 .btn-nav {
   color: #F2F6F4;
   background: var(--green-dark);
@@ -1765,5 +1824,100 @@ main {
 }
 
 
+/* ==========================================
+   HISTÓRICOS - CARDS EXPANSÍVEIS
+   ========================================== */
+.history-accordion .accordion-item {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.history-accordion .accordion-item + .accordion-item {
+  margin-top: .75rem;
+}
+
+.history-empty {
+  background: var(--cream);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.history-accordion .accordion-button {
+  background: var(--white);
+  color: var(--ink);
+  font-weight: 600;
+  padding: 16px 20px;
+  box-shadow: none;
+}
+
+.history-accordion .accordion-button:not(.collapsed) {
+  background: var(--cream);
+  color: var(--green-dark);
+}
+
+.history-accordion .accordion-button:focus {
+  box-shadow: none;
+  border-color: var(--line);
+}
+
+.history-accordion .accordion-button::after {
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.history-accordion .accordion-button small {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.history-accordion .accordion-body {
+  background: var(--cream);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+  font-size: .95rem;
+}
+
+html.dark .history-accordion .accordion-item {
+  background: var(--white);
+  border-color: var(--line);
+}
+
+html.dark .history-accordion .accordion-button {
+  background: var(--white);
+  color: var(--ink);
+}
+
+html.dark .history-accordion .accordion-button:not(.collapsed) {
+  background: var(--cream);
+  color: #EDF4F0;
+}
+
+html.dark .history-accordion .accordion-button::after {
+  filter: invert(1) brightness(1.6);
+}
+
+html.dark .history-accordion .accordion-body {
+  background: var(--cream);
+  color: var(--ink);
+  border-top-color: var(--line);
+}
+
+@media (max-width: 575.98px) {
+  .history-accordion .accordion-button .w-100 {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .history-accordion .accordion-button small {
+    margin-left: 0 !important;
+    margin-top: 2px;
+  }
+}
 
 
