@@ -6,7 +6,8 @@
   "description": "VivaLíngua — Projeto Integrador (HTML, CSS, JS + Vercel Functions + PostgreSQL)",
   "scripts": {
     "dev": "vercel dev",
-    "deploy": "vercel --prod"
+    "deploy": "vercel --prod",
+    "db:setup": "node banco/aplicar-sql.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",
