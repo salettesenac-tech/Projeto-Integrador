@@ -3,8 +3,8 @@
 Modelagem PostgreSQL da aplicação VivaLíngua (Projeto Integrador — diversidade
 linguística brasileira).
 
-O modelo foi escrito para substituir o armazenamento atual em `localStorage`,
-mantendo os mesmos campos que o site já usa hoje.
+O modelo foi escrito para substituir o armazenamento que o site usava em
+`localStorage`, mantendo os mesmos campos do front-end.
 
 ## Estrutura do projeto
 
@@ -14,15 +14,40 @@ Projeto-Integrador/
 ├── imagem - VivaL.jpg          # Imagem de destaque do projeto
 ├── LICENSE
 ├── .gitattributes
+├── .gitignore
+├── .env.example                # Modelo das variáveis de ambiente
+├── package.json                # Dependências das funções serverless
+├── package-lock.json           # Versões travadas das dependências
 ├── banco/                      # Modelagem PostgreSQL
 │   ├── 01-schema.sql           # Tipos, tabelas, índices, triggers, funções e views
 │   ├── 02-seed.sql             # Carga inicial (regiões, culturas, palavras)
 │   └── README.md               # Documentação do banco (este arquivo)
+├── api/                        # Backend (Vercel Functions)
+│   ├── _lib/                   # Helpers compartilhados (não viram endpoints)
+│   │   ├── db.js               # Conexão com o PostgreSQL (Neon)
+│   │   ├── http.js             # Respostas, corpo e IP do cliente
+│   │   ├── reset.js            # Códigos de recuperação de senha
+│   │   ├── session.js          # Cookie e tabela sessao
+│   │   ├── usuario.js          # Consulta completa do usuário
+│   │   └── validation.js       # E-mail, telefone e força de senha
+│   ├── auth/
+│   │   ├── register.js         # POST /api/auth/register
+│   │   ├── login.js            # POST /api/auth/login
+│   │   ├── logout.js           # POST /api/auth/logout
+│   │   ├── me.js               # GET  /api/auth/me
+│   │   ├── forgot.js           # POST /api/auth/forgot
+│   │   ├── verify-code.js      # POST /api/auth/verify-code
+│   │   ├── reset.js            # POST /api/auth/reset
+│   │   └── change-password.js  # POST /api/auth/change-password
+│   ├── searches.js             # GET/POST /api/searches
+│   ├── contributions.js        # GET/POST /api/contributions
+│   └── profile.js              # GET/PATCH /api/profile
 └── src/
     ├── css/
     │   └── style.css           # Estilos globais da aplicação
     ├── js/
-    │   ├── auth.js             # Cadastro, login, sessão e recuperação de senha
+    │   ├── api.js              # Cliente fetch da API
+    │   ├── auth.js             # Cadastro, login, sessão, perfil e senhas
     │   ├── historico.js        # Histórico de pesquisas e contribuições
     │   └── script.js           # Busca, banco de palavras e contribuições
     └── paginas/
@@ -51,6 +76,78 @@ psql -d vivalingua -f 02-seed.sql
 Requisitos: **PostgreSQL 13+** (usa `gen_random_uuid()` nativo) e **nenhuma
 extensão**. Os dois scripts são idempotentes: podem ser executados várias vezes
 sem duplicar dados.
+
+---
+
+## Backend na Vercel
+
+O front-end continua sendo HTML, CSS e JS. O "servidor" são as funções em
+`api/`, executadas pela Vercel, e os dados ficam no PostgreSQL (Neon/Vercel
+Postgres). O `localStorage` agora guarda apenas cache de exibição (tema,
+avatar e nome no header); a sessão de verdade é o cookie `HttpOnly`
+`vivalingua_session`, validado contra a tabela `sessao`.
+
+### Variáveis de ambiente
+
+| Variável | Obrigatória | Uso |
+|---|---|---|
+| `DATABASE_URL` | sim | Connection string do PostgreSQL |
+| `AUTH_SECRET` | recomendada | Chave usada no hash dos códigos de recuperação |
+| `RESEND_API_KEY` | não | Envio real do código por e-mail (Resend) |
+| `EMAIL_FROM` | não | Remetente usado no envio por e-mail |
+| `DEMO_MOSTRAR_CODIGO` | não | `true` devolve o código no JSON quando não há envio real |
+
+Copie `.env.example` para `.env.local` e preencha os valores. O `.env.local`
+não deve ser commitado.
+
+### Rodar localmente
+
+```bash
+npm install
+npx vercel dev
+```
+
+### Deploy
+
+1. Importe o repositório na Vercel.
+2. Framework Preset: **Other**; Build Command vazio; Output Directory: `.`.
+3. Cadastre as variáveis de ambiente (`DATABASE_URL`, `AUTH_SECRET`).
+4. Rode os scripts SQL no banco (veja acima) e faça o deploy.
+
+Ou pelo terminal:
+
+```bash
+npx vercel link
+npx vercel env add DATABASE_URL
+npx vercel env add AUTH_SECRET
+npx vercel --prod
+```
+
+### Endpoints
+
+| Método | Rota | Função |
+|---|---|---|
+| `POST` | `/api/auth/register` | Cria a conta com senha em bcrypt |
+| `POST` | `/api/auth/login` | Valida a senha e cria a sessão (cookie) |
+| `POST` | `/api/auth/logout` | Revoga a sessão atual |
+| `GET` | `/api/auth/me` | Usuário logado (ou `null`) |
+| `POST` | `/api/auth/forgot` | Gera o código de recuperação (15 min) |
+| `POST` | `/api/auth/verify-code` | Confere o código antes da troca |
+| `POST` | `/api/auth/reset` | Troca a senha usando o código |
+| `POST` | `/api/auth/change-password` | Troca a senha do usuário logado |
+| `GET`/`POST` | `/api/searches` | Histórico de pesquisas do usuário |
+| `GET`/`POST` | `/api/contributions` | Histórico e envio de contribuições |
+| `GET`/`PATCH` | `/api/profile` | Consulta e edição do perfil |
+
+As pesquisas exigem login. As contribuições podem ser enviadas anonimamente
+(`usuario_id` nulo), mas só aparecem no histórico quando há sessão.
+
+### Recuperação de senha
+
+Sem `RESEND_API_KEY`, o código é gravado apenas no log da função e, se
+`DEMO_MOSTRAR_CODIGO=true`, também é devolvido na resposta para fins de
+demonstração. Em produção real, configure o Resend e deixe
+`DEMO_MOSTRAR_CODIGO=false`.
 
 ---
 
@@ -181,9 +278,13 @@ erDiagram
 
 ---
 
-## De onde vem cada tabela no código atual
+## De onde vinha cada tabela (antes da API)
 
-| Hoje (front-end) | Chave / campo | Vira no banco |
+A tabela abaixo registra a migração do armazenamento antigo em `localStorage`
+para o banco. Hoje o acesso passa pelas funções em `api/`, mas os campos
+continuam os mesmos.
+
+| Antes (front-end) | Chave / campo | Virou no banco |
 |---|---|---|
 | `auth.js` — `vivalingua_users` | `{ name, region, email, phone, password, cultura, createdAt }` | `usuario` + `usuario_cultura` + `senha_hash` |
 | `auth.js` — `vivalingua_session` | `{ name, email }` | `sessao` (com token de verdade) |
@@ -269,23 +370,24 @@ SELECT * FROM vw_palavra_completa WHERE termo_normalizado = fn_normalizar_termo(
 
 ## Pontos de atenção para a implementação
 
-1. **Limites de histórico.** Hoje o site corta em 30 pesquisas e 50
-   contribuições por usuário (`slice(0, 30)` / `slice(0, 50)`). No banco o
-   ideal é manter tudo e paginar as telas. Se quiser o mesmo comportamento,
-   um `DELETE` dos registros mais antigos por usuário resolve.
-2. **Senhas.** O front-end compara senha em texto puro; no banco isso vira
-   hash. A validação de força que existe em `auth.js` deve continuar no
-   servidor (a `CHECK` do banco valida apenas formato de e-mail e telefone).
-3. **Recuperação de senha.** Ao gerar um novo código, invalide o anterior:
-   ```sql
-   UPDATE recuperacao_senha SET usado_em = now()
-    WHERE usuario_id = $1 AND usado_em IS NULL;
-   ```
-4. **Sessão ou JWT.** Se a API usar cookie de sessão opaco, use a tabela
-   `sessao`; se usar JWT, mantenha a tabela apenas para revogação (blacklist).
-5. **Avatar.** O front-end guarda a imagem em base64 no `localStorage`. No banco
-   o campo é `avatar_url`: guarde o arquivo em disco/S3 e apenas o caminho.
-6. **Busca por texto.** Para busca "contém" no significado, um índice GIN com
+1. **Limites de histórico.** A API guarda todas as pesquisas e contribuições,
+   mas as leituras usam `LIMIT 30` e `LIMIT 50`, como o site fazia antes. Para
+   paginar, troque por `LIMIT`/`OFFSET` com um parâmetro de página.
+2. **Senhas.** A API grava apenas o hash bcrypt (custo 10) e valida a força da
+   senha no servidor; o front-end repete a validação apenas para dar feedback
+   rápido.
+3. **Recuperação de senha.** Implementada em `api/auth/*`: o código anterior é
+   invalidado, o novo é guardado como HMAC-SHA256, expira em 15 minutos e
+   permite no máximo 5 tentativas.
+4. **Sessão.** Cookie opaco `HttpOnly` + tabela `sessao`. O logout revoga a
+   sessão atual; a troca/redefinição de senha revoga as demais sessões.
+5. **Avatar.** O front-end ainda guarda a imagem em base64 no `localStorage`
+   (por dispositivo). Para persistir por perfil, use o Vercel Blob e grave a
+   URL em `usuario.avatar_url`.
+6. **Rate limiting.** Login e recuperação de senha ainda não têm limite de
+   requisições por IP. Para produção, use Upstash Redis/Vercel KV na frente
+   dessas rotas.
+7. **Busca por texto.** Para busca "contém" no significado, um índice GIN com
    `to_tsvector('portuguese', significado)` é o próximo passo natural — não foi
    incluído para não quebrar a compatibilidade de instalações sem configuração
    de idioma.

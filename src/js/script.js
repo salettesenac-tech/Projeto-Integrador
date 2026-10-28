@@ -399,9 +399,11 @@
     const resultado = document.getElementById("searchResults");
 
 
-    function pesquisarPalavra(termo) {
+    function pesquisarPalavra(termoDigitado) {
 
-        termo = termo
+        const termoOriginal = String(termoDigitado || "").trim();
+
+        const termo = termoOriginal
             .toLowerCase()
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "");
@@ -412,13 +414,12 @@
             return;
         }
 
-        // salva o histórico de pesquisas
-        if (termo) {
-            try {
-                const buscas = JSON.parse(localStorage.getItem("vivalingua_searches") || "[]");
-                buscas.unshift({ termo, data: new Date().toISOString() });
-                localStorage.setItem("vivalingua_searches", JSON.stringify(buscas.slice(0, 30)));
-            } catch (e) {}
+        // Salva o histórico no banco (somente quando há usuário logado).
+        if (termoOriginal && typeof apiFetch === "function") {
+            apiFetch("/searches", {
+                method: "POST",
+                body: JSON.stringify({ termo: termoOriginal })
+            }).catch(() => {});
         }
 
         resultado.classList.remove("d-none");
@@ -1085,7 +1086,7 @@
 
     if (formContribuicoes) {
 
-        formContribuicoes.addEventListener("submit", (event) => {
+        formContribuicoes.addEventListener("submit", async (event) => {
 
             event.preventDefault();
 
@@ -1105,29 +1106,51 @@
 
             const contexto = document.getElementById("contribContext").value.trim();
 
+            const botao = formContribuicoes.querySelector('button[type="submit"]');
+
+            if (botao) botao.disabled = true;
+
             try {
 
-                const contribs = JSON.parse(localStorage.getItem("vivalingua_contributions") || "[]");
+                await apiFetch("/contributions", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        termo: palavra,
+                        regiao,
+                        significado,
+                        contexto
+                    })
+                });
 
-                contribs.unshift({ palavra, regiao, significado, contexto, data: new Date().toISOString() });
+                if (feedbackContribuicao) {
 
-                localStorage.setItem("vivalingua_contributions", JSON.stringify(contribs.slice(0, 50)));
+                    feedbackContribuicao.classList.remove("d-none");
 
-            } catch (e) {}
+                    feedbackContribuicao.innerHTML = `Obrigado! A expressão <strong>${palavra}</strong>, enviada da região <strong>${regiao}</strong>, foi registrada.`;
 
-            if (feedbackContribuicao) {
+                }
 
-                feedbackContribuicao.classList.remove("d-none");
+                formContribuicoes.reset();
 
-                feedbackContribuicao.innerHTML = `Obrigado! A expressão <strong>${palavra}</strong>, enviada da região <strong>${regiao}</strong>, foi registrada.`;
+                formContribuicoes.classList.remove("was-validated");
+
+                mostrarToast("Contribuição enviada com sucesso!");
+
+            } catch (err) {
+
+                if (feedbackContribuicao) {
+
+                    feedbackContribuicao.classList.remove("d-none");
+
+                    feedbackContribuicao.textContent = err.message;
+
+                }
+
+            } finally {
+
+                if (botao) botao.disabled = false;
 
             }
-
-            formContribuicoes.reset();
-
-            formContribuicoes.classList.remove("was-validated");
-
-            mostrarToast("Contribuição enviada com sucesso!");
 
         });
 

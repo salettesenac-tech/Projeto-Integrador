@@ -1,0 +1,15 @@
+{
+  "name": "vivalingua",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "VivaLíngua — Projeto Integrador (HTML, CSS, JS + Vercel Functions + PostgreSQL)",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "bcryptjs": "^3.0.2"
+  }
+}
