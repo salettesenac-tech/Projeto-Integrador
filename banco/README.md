@@ -6,6 +6,37 @@ linguística brasileira).
 O modelo foi escrito para substituir o armazenamento atual em `localStorage`,
 mantendo os mesmos campos que o site já usa hoje.
 
+## Estrutura do projeto
+
+```text
+Projeto-Integrador/
+├── index.html                  # Página inicial (busca de palavras)
+├── imagem - VivaL.jpg          # Imagem de destaque do projeto
+├── LICENSE
+├── .gitattributes
+├── banco/                      # Modelagem PostgreSQL
+│   ├── 01-schema.sql           # Tipos, tabelas, índices, triggers, funções e views
+│   ├── 02-seed.sql             # Carga inicial (regiões, culturas, palavras)
+│   └── README.md               # Documentação do banco (este arquivo)
+└── src/
+    ├── css/
+    │   └── style.css           # Estilos globais da aplicação
+    ├── js/
+    │   ├── auth.js             # Cadastro, login, sessão e recuperação de senha
+    │   ├── historico.js        # Histórico de pesquisas e contribuições
+    │   └── script.js           # Busca, banco de palavras e contribuições
+    └── paginas/
+        ├── cadastro.html
+        ├── codigo.html         # Verificação do código de recuperação
+        ├── editar-perfil.html
+        ├── esqueci-senha.html
+        ├── historicos.html
+        ├── login.html
+        ├── nova-senha.html
+        ├── perfil.html
+        └── trocar-senha.html
+```
+
 | Arquivo | Conteúdo |
 |---|---|
 | `01-schema.sql` | Criação do esquema: tipos, tabelas, índices, triggers, funções e views |
